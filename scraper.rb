@@ -17,18 +17,27 @@ page = Nokogiri::HTML(RestClient.get(PAGE_URL))
 word_group = page.css('li').select()
 
 # create a hash to store our word, definition pairs
-words = {}
+words = []
 
 # get each word, definition and insert into hash
 word_group.each do |group|
 
+	word_group = {}
+
 	word =  group.css('.word').text.to_s
 	definition = group.css('.definition').text.to_s
 
-	words[word] = definition
+	if(word != "" && definition != "")
+		word_group[word] = definition
+		words.push(word_group)
+	end
+
 end
+
+output_hash = {}
+output_hash['data'] = words
 
 # finally, write our hash to a json file 
 File.open(OUTPUT_FILE,"w") do |f|
-  f.write(words.to_json)
+  f.write(output_hash.to_json)
 end
