@@ -16,7 +16,6 @@ page = Nokogiri::HTML(RestClient.get(PAGE_URL))
 # each list element has our word and definition
 word_group = page.css('li').select()
 
-# create a hash to store our word, definition pairs
 words = []
 
 # get each word, definition and insert into hash
