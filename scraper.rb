@@ -27,7 +27,8 @@ word_group.each do |group|
 	definition = group.css('.definition').text.to_s
 
 	if(word != "" && definition != "")
-		word_group[word] = definition
+		word_group['word'] = word
+		word_group['definition'] = definition
 		words.push(word_group)
 	end
 
