@@ -18,7 +18,7 @@ word_group = page.css('li').select()
 
 words = []
 
-# get each word, definition and insert into hash
+# get each word, definition and insert
 word_group.each do |group|
 
 	word_group = {}
